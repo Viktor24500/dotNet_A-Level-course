@@ -7,7 +7,6 @@
             int length = 20;
             int counter = 0;
             int[] startArray = new int[length];
-            //int[] finalArray = new int[length];
             startArray = RandomArray(startArray, length);
             for (int i = 0; i < length; i++)
             {
@@ -18,7 +17,6 @@
             }
             int[] finalArray = new int[counter];
             finalArray = CopyArray(startArray, finalArray);
-            //finalArray =SortArray(finalArray);
             Console.WriteLine("old array");
             PrintArray(startArray);
             Console.WriteLine();
@@ -53,18 +51,6 @@
                     j++;
                 }
             }
-            ////Length finalArray=20
-            //for (int i = 0; i < startArray.Length; i++)
-            //{
-            //    if (startArray[i] <= 888)
-            //    {
-            //        finalArray[i] = startArray[i];
-            //    }
-            //    else
-            //    {
-            //        finalArray[i] = 0;
-            //    }
-            //}
             Array.Sort(finalArray);
             Array.Reverse(finalArray);
             return finalArray;
