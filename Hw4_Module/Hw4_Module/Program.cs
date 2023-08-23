@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
             string[,] itemsArray = new string[2, 10]; //row, columns
-            //string[,] itemsArray = new string[2, 10] 
+            //string[,] itemsArray = new string[2, 10]
             //{
             //    {"buy bread","s","d","f","g","h","j","k","l","o" },
             //    {"0","0","1 22/08/2023 21:31", "0", "0", "1 22/08/2023 21:31", "1 22/08/2023 21:31", "0",
