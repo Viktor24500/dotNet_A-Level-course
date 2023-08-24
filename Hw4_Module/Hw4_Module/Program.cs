@@ -4,13 +4,13 @@
     {
         static void Main(string[] args)
         {
-            string[,] itemsArray = new string[2, 10]; //row, columns
-            //string[,] itemsArray = new string[2, 10]
-            //{
-            //    {"buy bread","s","d","f","g","h","j","k","l","o" },
-            //    {"0","0","1 22/08/2023 21:31", "0", "0", "1 22/08/2023 21:31", "1 22/08/2023 21:31", "0",
-            //        "1 22/08/2023 21:31", "1 22/08/2023 21:31"  }
-            //};
+            //string[,] itemsArray = new string[2, 10]; //row, columns
+            string[,] itemsArray = new string[2, 10]
+            {
+                {"buy bread","s","d","f","g","h","j","k","l","o" },
+                {"0","0","1 22/08/2023 21:31", "0", "0", "1 22/08/2023 21:31", "1 22/08/2023 21:31", "0",
+                    "1 22/08/2023 21:31", "1 22/08/2023 21:31"  }
+            };
             Menu(ref itemsArray);
         }
 
@@ -55,7 +55,9 @@
                         Console.ReadKey();
                         break;
                     default: Console.WriteLine("Please enter correct position from menu (a, b, c, d, e");
-                        break;
+                            Console.WriteLine("Enter any key");
+                            Console.ReadKey();
+                            break;
                 }
                 Console.Clear();
             }
@@ -74,15 +76,14 @@
         {
             Console.WriteLine("Enter your item");
             string item = Console.ReadLine();
-            bool check = CheckItemInArrayAddOrRemove(ref itemsArray, item, "Search");
+            bool check = CheckItemInArray(ref itemsArray, item);
             if (check == true)
             {
                 Console.WriteLine($"Item - {item} already exist");
             }
             else 
             {
-                SearchFreeSpaceInArray(ref itemsArray, item);
-                SearchFreeSpaceInArray(ref itemsArray, item, "Add");
+                AddItemInArray(ref itemsArray, item);
                 Console.WriteLine($"Item - {item} add");
             }
         }
@@ -98,7 +99,7 @@
             }
             else 
             {
-                bool check = CheckItemInArrayAddOrRemove(ref itemsArray, item, "Remove");
+                bool check = RemoveItemInArray(ref itemsArray, item, "Remove");
                 if (check == true)
                 {
                     Console.WriteLine($"Item - {item} removed");
@@ -134,10 +135,10 @@
                 Console.WriteLine($"status {status}");
             }
 
-            bool checkItem = CheckItemInArrayAddOrRemove(ref itemsArray, item, "Search", status);
+            bool checkItem = CheckItemInArray(ref itemsArray, item);
             if (checkItem == true)
             {
-                CheckItemInArrayAddOrRemove(ref itemsArray, item, "ChangeStatus", status);
+                ChangeStatusItemInArray(ref itemsArray, item, status);
                 Console.WriteLine($"{item} status changed to {status}");
                 return;
             }
@@ -159,8 +160,54 @@
             ShowItemsFromArray(ref itemsArray, status);
         }
 
-        public static bool CheckItemInArrayAddOrRemove(ref string[,] itemsArray, string item,
-            string indicateAddOrRemoveOrChangeStatus= "Search", string status = "0")
+        public static bool CheckItemInArray(ref string[,] itemsArray, string item)
+        {
+            int rows = itemsArray.GetUpperBound(0) + 1;
+            int columns = itemsArray.Length / rows;
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    string curentItem = itemsArray[i, j];
+                    if ((itemsArray[i, j] == null) && (itemsArray[i+1, j] == null))
+                    {
+                        continue;
+                    }
+                    else if ((curentItem.ToUpper() == item.ToUpper()))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public static bool ChangeStatusItemInArray(ref string[,] itemsArray, string item
+            , string status = "0")
+        {
+            int rows = itemsArray.GetUpperBound(0) + 1;
+            int columns = itemsArray.Length / rows;
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    string curentItem = itemsArray[i, j];
+                    if (itemsArray[i, j] == null)
+                    {
+                        continue;
+                    }
+                    else if (curentItem.ToUpper() == item.ToUpper())
+                    {
+                        itemsArray[i + 1, j] = status;
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public static bool RemoveItemInArray(ref string[,] itemsArray, string item,
+            string indicateAddOrRemoveOrChangeStatus, string status = "0")
         {
             int rows = itemsArray.GetUpperBound(0) + 1;
             int columns = itemsArray.Length / rows;
@@ -173,19 +220,10 @@
                     {
                         continue;
                     }
-                    else if ((curentItem.ToUpper() == item.ToUpper()) && indicateAddOrRemoveOrChangeStatus == "Search")
-                    {
-                        return true;
-                    }
-                    else if ((curentItem.ToUpper() == item.ToUpper()) && (indicateAddOrRemoveOrChangeStatus == "Remove"))
+                    else if (curentItem.ToUpper() == item.ToUpper())
                     {
                         itemsArray[i, j] = null;
                         itemsArray[i + 1, j] = null;
-                        return true;
-                    }
-                    else if ((curentItem.ToUpper() == item.ToUpper()) && indicateAddOrRemoveOrChangeStatus == "ChangeStatus") 
-                    {
-                        itemsArray[i + 1, j] = status;
                         return true;
                     }
                 }
@@ -227,22 +265,35 @@
             }
         }
 
-        public static bool SearchFreeSpaceInArray(ref string[,] itemsArray, string item, string status="Search")
+        public static bool AddItemInArray(ref string[,] itemsArray, string item)
         {
-            int counterFreeSpace = 0;
             int rows = itemsArray.GetUpperBound(0) + 1;
             int columns = itemsArray.Length / rows;
             for (int i = 0; i < rows-1; i++)
             {
                 for (int j = 0; j < columns; j++)
                 {
-                    if ((itemsArray[i, j] == null) && (itemsArray[i + 1, j] == null) && (status == "Add"))
+                    if ((itemsArray[i, j] == null) && (itemsArray[i + 1, j] == null))
                     {
                         itemsArray[i, j] = item;
                         itemsArray[i + 1, j] = "0";
                         return true;
                     }
-                    else if ((itemsArray[i, j] == null) && (itemsArray[i + 1, j] == null) && (status == "Search"))
+                }
+            }
+            return false;
+        }
+
+        public static bool SearchFreeSpaceInArray(ref string[,] itemsArray, string item)
+        {
+            int counterFreeSpace = 0;
+            int rows = itemsArray.GetUpperBound(0) + 1;
+            int columns = itemsArray.Length / rows;
+            for (int i = 0; i < rows - 1; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    if ((itemsArray[i, j] == null) && (itemsArray[i + 1, j] == null))
                     {
                         counterFreeSpace++;
                     }
