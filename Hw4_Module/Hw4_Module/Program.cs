@@ -164,7 +164,7 @@
         {
             int rows = itemsArray.GetUpperBound(0) + 1;
             int columns = itemsArray.Length / rows;
-            for (int i = 0; i < rows; i++)
+            for (int i = 0; i < rows-1; i++)
             {
                 for (int j = 0; j < columns; j++)
                 {
