@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module2_Class_Logger", "Module2_Class_Logger\Module2_Class_Logger.csproj", "{7F784781-A6F5-4696-AD1E-3499D054BFEC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F784781-A6F5-4696-AD1E-3499D054BFEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F784781-A6F5-4696-AD1E-3499D054BFEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F784781-A6F5-4696-AD1E-3499D054BFEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F784781-A6F5-4696-AD1E-3499D054BFEC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {239BC3C3-5032-4CF1-B9AB-27E3D352825B}
+	EndGlobalSection
+EndGlobal
