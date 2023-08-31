@@ -10,7 +10,7 @@ namespace Module2_Class_Logger
     public class Logger //singleton
     {
         private List<Result> _logs = null;
-        private string _path = @"D:\dot_Net_course_A-level\_logs.txt";
+        private string _path = @"D:\dot_Net_course_A-level\logs.txt";
         private Logger() { } //private singleton constructor
 
         private static Logger _instance;
