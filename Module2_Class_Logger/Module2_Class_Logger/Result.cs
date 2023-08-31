@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Module2_Class_Logger
 {
-    public class Result
+    public struct Result
     {
         public Status Status { get; set; }
 

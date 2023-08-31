@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Module2_Class_Logger
 {
     public class Logger //singleton
     {
-        private List<Result> logs = null;
+        private List<Result> _logs = null;
+        private string _path = @"D:\dot_Net_course_A-level\_logs.txt";
         private Logger() { } //private singleton constructor
 
         private static Logger _instance;
@@ -24,24 +26,48 @@ namespace Module2_Class_Logger
 
         public Status LogLevel { get; set; }
 
-        public void WriteLog()
+        public void WriteLog(string consoleOrFile="console")
         {
-            foreach (Result item in logs) 
+            foreach (Result item in _logs) 
             {
-                if (item.Status==LogLevel)
+                if (consoleOrFile == "console")
                 {
-                    Console.WriteLine($"{item.DateTime}: {item.Status}: {item.Message}");
+                    if (item.Status == LogLevel)
+                    {
+                        Console.WriteLine($"{item.DateTime}: {item.Status}: {item.Message}");
+                    }
+                }
+                else if (consoleOrFile == "file") 
+                {
+                    if (!File.Exists(_path))
+                    {
+                        StreamWriter sw = File.AppendText(_path);
+                        if (item.Status == LogLevel)
+                        {
+                            sw.WriteLine($"{item.DateTime}: {item.Status}: {item.Message}");
+                        }
+                        sw.Close();
+                    }
+                    else
+                    {
+                        StreamWriter sw = File.AppendText(_path);
+                        if (item.Status == LogLevel)
+                        {
+                            sw.WriteLine($"{item.DateTime}: {item.Status}: {item.Message}");
+                        }
+                        sw.Close();
+                    }
                 }
             }
         }
 
         public void AddLog(Result log) 
         {
-            if (logs == null) 
+            if (_logs == null) 
             {
-                logs = new List<Result>();
+                _logs = new List<Result>();
             }
-            logs.Add(log);
+            _logs.Add(log);
         }
     }
 }
