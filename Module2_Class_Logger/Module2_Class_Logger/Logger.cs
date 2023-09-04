@@ -26,37 +26,39 @@ namespace Module2_Class_Logger
 
         public Status LogLevel { get; set; }
 
-        public void WriteLog(string consoleOrFile="console")
+        public void WriteLogToConsole()
         {
             foreach (Result item in _logs) 
             {
-                if (consoleOrFile == "console")
+                if (item.Status == LogLevel)
                 {
+                    Console.WriteLine($"{item.DateTime}: {item.Status}: {item.Message}");
+                }
+                    
+            }
+        }
+
+        public void WriteLogToFile() 
+        {
+            foreach (Result item in _logs)
+            {
+                if (!File.Exists(_path))
+                {
+                    StreamWriter sw = File.AppendText(_path);
                     if (item.Status == LogLevel)
                     {
-                        Console.WriteLine($"{item.DateTime}: {item.Status}: {item.Message}");
+                        sw.WriteLine($"{item.DateTime}: {item.Status}: {item.Message}");
                     }
+                    sw.Close();
                 }
-                else if (consoleOrFile == "file") 
+                else
                 {
-                    if (!File.Exists(_path))
+                    StreamWriter sw = File.AppendText(_path);
+                    if (item.Status == LogLevel)
                     {
-                        StreamWriter sw = File.AppendText(_path);
-                        if (item.Status == LogLevel)
-                        {
-                            sw.WriteLine($"{item.DateTime}: {item.Status}: {item.Message}");
-                        }
-                        sw.Close();
+                        sw.WriteLine($"{item.DateTime}: {item.Status}: {item.Message}");
                     }
-                    else
-                    {
-                        StreamWriter sw = File.AppendText(_path);
-                        if (item.Status == LogLevel)
-                        {
-                            sw.WriteLine($"{item.DateTime}: {item.Status}: {item.Message}");
-                        }
-                        sw.Close();
-                    }
+                    sw.Close();
                 }
             }
         }

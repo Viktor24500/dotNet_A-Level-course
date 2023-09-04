@@ -13,19 +13,19 @@ namespace Module2_Class_Logger
         public static void InfoAction()
         {
             logger.LogLevel = Status.Info;
-            logger.WriteLog();
+            logger.WriteLogToConsole();
         }
 
         public static void WarningAction()
         {
             logger.LogLevel = Status.Warning;
-            logger.WriteLog();
+            logger.WriteLogToConsole();
         }
 
         public static void ErrorAction()
         {
             logger.LogLevel = Status.Error;
-            logger.WriteLog();
+            logger.WriteLogToConsole();
         }
     }
 }
