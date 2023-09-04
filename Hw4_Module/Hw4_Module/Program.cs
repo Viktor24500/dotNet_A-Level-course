@@ -83,7 +83,7 @@
             }
             else 
             {
-                AddItemInArray(ref itemsArray, item);
+                AddItemInArray(itemsArray, item);
                 Console.WriteLine($"Item - {item} add");
             }
         }
@@ -265,7 +265,7 @@
             }
         }
 
-        public static bool AddItemInArray(ref string[,] itemsArray, string item)
+        public static bool AddItemInArray(string[,] itemsArray, string item)
         {
             int rows = itemsArray.GetUpperBound(0) + 1;
             int columns = itemsArray.Length / rows;
