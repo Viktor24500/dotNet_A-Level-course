@@ -15,9 +15,9 @@ namespace Module2_HW3
 
         public Vehicle(int speed, string typeFuel, string brand)
         {
+            this.Brand = brand;
             this.Speed = speed;
             this.TypeFuel = typeFuel;
-            this.Brand = brand;
         }
         public abstract void Move();
     }
