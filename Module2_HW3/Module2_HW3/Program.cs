@@ -24,18 +24,22 @@ namespace Module2_HW3
             {
                 Console.WriteLine($"{item.Brand}, {item.Speed}");
             }
+            Console.WriteLine();
 
             //Find brand
-            Console.WriteLine("Input car brand");
-            string brand = Console.ReadLine();
+
+            //Console.WriteLine("Input car brand");
+            //string brand = Console.ReadLine();
+            string brand = "Kraz";
             IMove find = data.vehicles.Find(x => x.Brand == brand);
-            if (find.Brand == brand)
-            {
-                Console.WriteLine($"Car {find.Brand} found");
-            }
-            else 
+            if (find == null) 
             {
                 Console.WriteLine($"Car {brand} doesn't found");
+                return;
+            }
+            else if (find.Brand == brand)
+            {
+                Console.WriteLine($"Car {find.Brand} found");
             }
             Console.WriteLine(find.Brand);
             Console.ReadKey();

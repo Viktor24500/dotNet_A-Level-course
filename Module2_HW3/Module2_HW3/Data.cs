@@ -24,7 +24,7 @@ namespace Module2_HW3
 
                 
                 //speed, typeFuel, brand, hasFourWheelDrive
-                new Car(130, "diesel", "Ford", true)
+                new Car(130, "petrol", "Dodge", false)
             };
     }
 }
