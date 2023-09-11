@@ -11,8 +11,9 @@ namespace Module2_HW3
 
             //Sort by speed
             Console.WriteLine("Sort by speed");
-            List<IMove> sortedListBySpeed = (data.vehicles.OrderBy(item => item.Speed)).ToList();
-            foreach (var item in sortedListBySpeed) 
+            //List<IMove> sortedListBySpeed = (data.vehicles.OrderBy(item => item.Speed)).ToList();
+            Array.Sort(data.vehicles, 0, data.vehicles.Length);
+            foreach (var item in data.vehicles) 
             {
                 Console.WriteLine($"{item.Brand}, {item.Speed}");
             }
@@ -31,10 +32,11 @@ namespace Module2_HW3
             //Console.WriteLine("Input car brand");
             //string brand = Console.ReadLine();
             string brand = "Kraz";
-            IMove find = data.vehicles.Find(x => x.Brand == brand);
+            //IMove find = data.vehicles.Find(x => x.Brand == brand);
+            IMove find =null;
             if (find == null) 
             {
-                Console.WriteLine($"Car {brand} doesn't found");
+                Console.WriteLine($"Car {brand} wasn`t found");
                 return;
             }
             else if (find.Brand == brand)
