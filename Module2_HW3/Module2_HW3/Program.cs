@@ -12,7 +12,7 @@ namespace Module2_HW3
             //Sort by speed
             Console.WriteLine("Sort by speed");
             //List<IMove> sortedListBySpeed = (data.vehicles.OrderBy(item => item.Speed)).ToList();
-            Array.Sort(data.vehicles, 0, data.vehicles.Length);
+            Array.Reverse(data.vehicles);
             foreach (var item in data.vehicles) 
             {
                 Console.WriteLine($"{item.Brand}, {item.Speed}");
@@ -20,8 +20,8 @@ namespace Module2_HW3
             Console.WriteLine();
             //Sord by weight
             Console.WriteLine("Sort by descending brand length");
-            List<IMove> sortedListByBrand = (data.vehicles.OrderByDescending(x => x.Brand.Count())).ToList();
-            foreach (var item in sortedListByBrand)
+            IMove[] sortedArrayByBrand = (data.vehicles.OrderBy(x => x.Brand.Count())).ToArray();
+            foreach (var item in sortedArrayByBrand)
             {
                 Console.WriteLine($"{item.Brand}, {item.Speed}");
             }
