@@ -17,14 +17,14 @@ namespace Game.HeroAndEnemy.Hero
 
         public IArmour Armour { get; set; }
 
-        public Warrior(string name, int block, int health, int attack)
+        public Warrior(string name, int health, int attack, int block)
         {
             Name = name;
             Health = health;
-            attack = attack;
+            this.Attack = attack;
             //attack = Attack();
             //attack = attack + Weapon.GetAmountOfAddAttack;
-            //block = Block();
+            block = Block();
         }
 
         public int Block()

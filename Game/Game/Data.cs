@@ -37,7 +37,7 @@ namespace Game
 
         List<IUnit> enemies = new List<IUnit>
         {
-            new Goblin("Goblin", 40, 100),
+            new Goblin("Goblin", 40, 100, weapons ,armours),
             //new Wizzard()
         };
     }
