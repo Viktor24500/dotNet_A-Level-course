@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Game.Entity.Characters
 {
-    public class Wizzard : Character
+    public class Orc : Character
     {
         public IWeapon weapon;
 
@@ -15,7 +15,7 @@ namespace Game.Entity.Characters
         public int Health;
         public int AttackAmount;
 
-        public Wizzard(IWeapon weapon, string name, int health, int attack) : base(name, health, attack, weapon)
+        public Orc(IWeapon weapon, string name, int health, int attack) : base(name, health, attack, weapon)
         {
             Name = name;
             Health = health;

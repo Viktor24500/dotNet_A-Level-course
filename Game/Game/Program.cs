@@ -1,5 +1,6 @@
-﻿using Game.Entity.Weapons;
+﻿using Game.Entity.Characters;
 using Game.InterfaceAndAbstractClass;
+using Game.Entity.Weapons;
 
 namespace Game
 {
@@ -10,6 +11,8 @@ namespace Game
             //Axe axe = new Axe();
             //string a = axe.Name;
             //Console.WriteLine(a);
+            Data data = new Data();
+            data.characters[0].Fight(Orc);
         }
     }
 }

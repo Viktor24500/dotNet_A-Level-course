@@ -8,7 +8,7 @@ namespace Game.InterfaceAndAbstractClass
 {
     public abstract class Character : IWeapon
     {
-        public IWeapon weapon;
+        public IWeapon Weapon;
         public string Name { get; set; }
         public int HealthAmount { get; set; }
         public int AttackAmount { get; set; }
@@ -17,32 +17,33 @@ namespace Game.InterfaceAndAbstractClass
 
         public int AttackPower => throw new NotImplementedException();
 
-        public Character(string name, int health, int attack)
+        public Character(string name, int health, int attack, IWeapon weapon)
         {
             Name = name;
             this.HealthAmount = health;
             this.AttackAmount = attack;
+            this.Weapon = weapon;
         }
 
         public virtual void Health() 
         {
-            this.HealthAmount = HealthAmount + weapon.DefencePower;
+            this.HealthAmount = HealthAmount + Weapon.DefencePower;
         }
 
         public virtual void Attack(Character enemy)
         {
-            this.AttackAmount = AttackAmount + weapon.AttackPower;
+            this.AttackAmount = AttackAmount + Weapon.AttackPower;
             enemy.HealthAmount = enemy.HealthAmount - this.AttackAmount;
         }
 
-        public virtual void SetWeapon(IWeapon weaponInMethod)
-        {
-            this.weapon = weaponInMethod;
-        }
+        //public virtual void SetWeapon(IWeapon weaponInMethod)
+        //{
+        //    this.weapon = weaponInMethod;
+        //}
 
-        public virtual void Fight() 
+        public virtual void Fight(Character enemy) 
         {
-            Console.WriteLine($"{Name} attack");
+            Console.WriteLine($"{this.Name} attack {enemy.Name}");
         }
 
         public void useWeapon()
