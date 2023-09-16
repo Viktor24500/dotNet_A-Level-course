@@ -21,9 +21,11 @@ namespace Game
         
         public List<Character> characters = new List<Character> 
         {
+            // weapon, name, health, attack
             new Dwarf(weapons[0], "Dwarf", 100, 40),
-            new Orc(weapons[2], "Orc", 50, 20),
+            new Orc(weapons[2], "Orc", 80, 20),
             new Wizzard(weapons[3], "Wizzard", 30, 10),
+            new  Elv(weapons[1], "Elv", 60, 30)
         };
     }
 }

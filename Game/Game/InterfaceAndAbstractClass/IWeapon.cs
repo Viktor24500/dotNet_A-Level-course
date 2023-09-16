@@ -11,6 +11,7 @@ namespace Game.InterfaceAndAbstractClass
         public string Name { get; }
         public int AttackPower { get; }
         public int DefencePower { get; }
+
         void useWeapon();
     }
 }

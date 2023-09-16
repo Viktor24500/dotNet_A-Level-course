@@ -24,27 +24,6 @@ namespace Game.Entity.Characters
 
         }
 
-        //public override string Name 
-        //{
-        //    get => "Wizzard";
-        //}
-
-        //public override int Health 
-        //{
-        //    get => 30;
-        //    //set => 30 + _weapon.Defence;
-        //}
-
-        //public override int Attack 
-        //{
-        //    get => 10;
-        //}
-
-        //public override void SetWeapon(IWeapon weaponInMethod)
-        //{
-        //    this.weapon = weaponInMethod;
-        //}
-
         public override void Fight(Character enemy)
         {
             Console.WriteLine($"{this.Name} attack {enemy.Name}");

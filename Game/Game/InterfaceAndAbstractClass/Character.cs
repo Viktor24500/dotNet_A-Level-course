@@ -12,10 +12,11 @@ namespace Game.InterfaceAndAbstractClass
         public string Name { get; set; }
         public int HealthAmount { get; set; }
         public int AttackAmount { get; set; }
+        private bool _isAlive = true;
 
-        public int DefencePower => throw new NotImplementedException();
+        public int DefencePower => Weapon.DefencePower;
 
-        public int AttackPower => throw new NotImplementedException();
+        public int AttackPower => Weapon.AttackPower;
 
         public Character(string name, int health, int attack, IWeapon weapon)
         {
@@ -34,21 +35,51 @@ namespace Game.InterfaceAndAbstractClass
         {
             this.AttackAmount = AttackAmount + Weapon.AttackPower;
             enemy.HealthAmount = enemy.HealthAmount - this.AttackAmount;
+
+            if(IsAlive(enemy.HealthAmount) == false)
+            {
+                this._isAlive = false;
+                return;
+            }
         }
 
-        //public virtual void SetWeapon(IWeapon weaponInMethod)
+        public abstract void Fight(Character enemy);
         //{
-        //    this.weapon = weaponInMethod;
+        //    Console.WriteLine($"{this.Name} attack {enemy.Name}");
         //}
 
-        public virtual void Fight(Character enemy) 
+        public void useWeapon(IWeapon weapon)
         {
-            Console.WriteLine($"{this.Name} attack {enemy.Name}");
+            Console.WriteLine($"Hero {this.Name} use {weapon.Name} and have {weapon.AttackPower} bonus to his attack " +
+                $"and {weapon.DefencePower} for his defence");
         }
 
         public void useWeapon()
         {
-            
+            Console.WriteLine($"Hero {this.Name} use {Weapon.Name} and has {Weapon.AttackPower} bonus for " +
+                $"attack and {Weapon.DefencePower} for defence");
+        }
+
+        public virtual void Stats() 
+        {
+            Console.WriteLine($"{Name} : \n" +
+                $"Attack: {AttackAmount}, \n" +
+                $"Defence: {HealthAmount}, \n" +
+                $"Weapon: {Weapon.Name}, \n" +
+                $"--------------- \n" +
+                $"With bonus from weapons \n" +
+                $"Attack: {AttackAmount + Weapon.AttackPower}, \n" +
+                $"Defence: {HealthAmount + Weapon.DefencePower}");
+        }
+
+        public virtual bool IsAlive(int healthAmount)
+        {
+            if (healthAmount <= 0) 
+            {
+                Console.WriteLine($"{Name} dead");
+                return false;
+            }
+            return true;
         }
     }
 }
