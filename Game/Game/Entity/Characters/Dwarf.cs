@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Game.Entity.Characters
 {
-    internal class Dwarf : Character
+    internal class Troll : Character
     {
         public IWeapon weapon;
 
@@ -15,7 +15,7 @@ namespace Game.Entity.Characters
         public int Health;
         public int AttackAmount;
 
-        public Dwarf(IWeapon weapon, string name, int health, int attack) : base(name, health, attack, weapon)
+        public Troll(IWeapon weapon, string name, int health, int attack) : base(name, health, attack, weapon)
         {
             Name = name;
             Health = health;

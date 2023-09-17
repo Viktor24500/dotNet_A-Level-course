@@ -22,9 +22,9 @@ namespace Game
         public List<Character> characters = new List<Character> 
         {
             // weapon, name, health, attack
-            new Dwarf(weapons[0], "Dwarf", 100, 40),
+            new Troll(weapons[0], "Troll", 100, 15),
             new Orc(weapons[2], "Orc", 80, 20),
-            new Wizzard(weapons[3], "Wizzard", 30, 10),
+            new Wizzard(weapons[3], "Wizzard", 150, 25),
             new  Elv(weapons[1], "Elv", 60, 30)
         };
     }

@@ -31,16 +31,17 @@ namespace Game.InterfaceAndAbstractClass
             this.HealthAmount = HealthAmount + Weapon.DefencePower;
         }
 
-        public virtual void Attack(Character enemy)
+        public virtual bool Attack(Character enemy)
         {
             this.AttackAmount = AttackAmount + Weapon.AttackPower;
             enemy.HealthAmount = enemy.HealthAmount - this.AttackAmount;
 
-            if(IsAlive(enemy.HealthAmount) == false)
+            if(IsAlive(enemy, enemy.HealthAmount) == false)
             {
                 this._isAlive = false;
-                return;
+                return false;
             }
+            return true;
         }
 
         public abstract void Fight(Character enemy);
@@ -72,11 +73,11 @@ namespace Game.InterfaceAndAbstractClass
                 $"Defence: {HealthAmount + Weapon.DefencePower}");
         }
 
-        public virtual bool IsAlive(int healthAmount)
+        public virtual bool IsAlive(Character enemy, int healthAmount)
         {
             if (healthAmount <= 0) 
             {
-                Console.WriteLine($"{Name} dead");
+                Console.WriteLine($"{enemy.Name} dead");
                 return false;
             }
             return true;
