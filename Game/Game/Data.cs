@@ -22,10 +22,10 @@ namespace Game
         public List<Character> characters = new List<Character> 
         {
             // weapon, name, health, attack
-            new Troll(weapons[0], "Troll", 100, 15),
-            new Orc(weapons[2], "Orc", 80, 20),
-            new Wizzard(weapons[3], "Wizzard", 150, 25),
-            new  Elv(weapons[1], "Elv", 60, 30)
+            new Troll(weapons[new Random().Next(0, 4)], "Troll", 100, 15),
+            new Orc(weapons[new Random().Next(0, 4)], "Orc", 80, 20),
+            new Wizzard(weapons[new Random().Next(0, 4)], "Wizzard", 100, 15),
+            new  Elv(weapons[new Random().Next(0, 4)], "Elv", 60, 30)
         };
     }
 }

@@ -54,6 +54,7 @@ namespace Game
                         break;
                     }
                 }
+                data = new Data();
                 Console.Clear();
             }
         }
@@ -67,7 +68,7 @@ namespace Game
         public void ChooseEnemy(int flag)
         {
             Random random = new Random();
-            int randomEnemy = random.Next(0, 1); // Random choice between Troll and Orc
+            int randomEnemy = random.Next(0, 2); // Random choice between Troll and Orc
             Fight(flag, randomEnemy);
         }
 
