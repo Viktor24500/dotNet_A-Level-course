@@ -30,8 +30,10 @@ namespace Linq
             Console.WriteLine($"Max in Even = {querry9Even.Max()}, max in Odd = {querry9Odd.Max()}");
             var querry10 = numbers.Select(x => x>numbers.Average());
             var querry11 = strings.GroupBy(x => x.Length);
-            var querry12 = str;
-
+            string subString = Console.ReadLine();
+            var querry12 = strings.Where(str => str.Contains(subString, StringComparison.OrdinalIgnoreCase)).
+                OrderBy(str => str.Length).Select(str => $"{char.ToUpper(str[0])}{str.Substring(1).ToLower()}");
+            Console.WriteLine(querry1);
         }
     }
 }
