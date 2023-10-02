@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            int searchNumber=-100;
+            int searchNumber = -100;
             bool correctNumber = false;
             while (!correctNumber)
             {
@@ -15,15 +15,34 @@
                     Console.WriteLine("Please input integer number");
                     correctNumber = false;
                 }
-                else 
+                else
                 {
                     correctNumber = true;
                 }
             }
-            int[] numbers = new int[] { -78, 29, 84, -61, -27, 3, 71, -52, -95,
-            -4, 42, 68, -17, -67, -38, -85, -89, -56, -12, 95, 19, 5, 62, -50, 81, -33, -71, 11, 91, -7 };
-            int findNumber=BinarySearch.Search(numbers, searchNumber);
-            Console.WriteLine($"find number {findNumber}");
+            int[] numbers = new int[] { -95, -89, -85, -78, -71, -67, -61, -56, -52, -50, -38, -33,
+                -27, -17, -12, -7, -4, 3, 5, 11, 19, 29, 42, 62, 68, 71, 81, 84, 91, 95 };
+            checkSortArray(numbers);
+            int findNumber = BinarySearch.Search(numbers, searchNumber);
+            Console.WriteLine($"find number in {findNumber} index");
+        }
+
+        private static void checkSortArray(int[] numbers) 
+        {
+            int left = 0;
+            int right = 1;
+            for(int i=0; i<numbers.Length; i++) 
+            {
+                if (numbers[left] > numbers[right])
+                {
+                    throw new ArgumentException($"Array doesn't sort");
+                }
+                left++;
+                if (right < numbers.Length - 1)
+                {
+                    right++;
+                }
+            }
         }
     }
 }
