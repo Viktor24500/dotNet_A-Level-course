@@ -6,26 +6,43 @@ using System.Threading.Tasks;
 
 namespace Module2_Class_Logger
 {
-    public static class Actions
+    public class Actions
     {
+
         public static Logger logger { get; set; }
 
         public static void InfoAction()
         {
-            logger.LogLevel = Status.Info;
-            logger.WriteLogToConsole();
+            Result result = new Result();
+            result.Status = Status.Info;
+            result.DateTime = DateTime.Now;
+            result.Message = "This is info message";
+            logger.WriteToJson(result);
         }
 
         public static void WarningAction()
         {
-            logger.LogLevel = Status.Warning;
-            logger.WriteLogToConsole();
+            Result result = new Result();
+            result.Status = Status.Warning;
+            result.DateTime = DateTime.Now;
+            result.Message = "This is warning message";
+            logger.WriteToJson(result);
         }
 
         public static void ErrorAction()
         {
-            logger.LogLevel = Status.Error;
-            logger.WriteLogToConsole();
+            try 
+            {
+                throw new BusinessException("Business Ex");
+            }
+            catch(BusinessException ex)
+            {
+                Result result = new Result();
+                result.Status = Status.Error;
+                result.DateTime = DateTime.Now;
+                result.Message = ex.Message;
+                logger.WriteToJson(result);
+            }
         }
     }
 }
