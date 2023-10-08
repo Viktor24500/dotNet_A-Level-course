@@ -10,8 +10,8 @@ namespace Module2_HW3
 {
     public class Data
     {
-        //public IMove[] vehicles = new IMove[]
-        public List<IMove> vehicles = new List<IMove>()
+        //public List<IMove> vehicles = new List<IMove>()
+        public IMove[] vehicles = new IMove[]
         {
                 //loadCapacity, speed, typeFuel, brand, hasFourWheelDrive
                 new Truck(5000, 80, "diesel", "Kraz", true),
@@ -25,6 +25,6 @@ namespace Module2_HW3
                 
                 //speed, typeFuel, brand, hasFourWheelDrive
                 new Car(130, "petrol", "Dodge", false)
-            };
+        };
     }
 }
