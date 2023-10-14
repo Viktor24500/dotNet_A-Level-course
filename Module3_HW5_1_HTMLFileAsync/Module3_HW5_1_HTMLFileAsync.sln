@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module3_HW5_1_HTMLFileAsync", "Module3_HW5_1_HTMLFileAsync\Module3_HW5_1_HTMLFileAsync.csproj", "{589C7792-08C7-4C8C-9929-036267ACF7CD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{589C7792-08C7-4C8C-9929-036267ACF7CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{589C7792-08C7-4C8C-9929-036267ACF7CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{589C7792-08C7-4C8C-9929-036267ACF7CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{589C7792-08C7-4C8C-9929-036267ACF7CD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {19395DE3-060A-4840-A662-24BE6EBB80FA}
+	EndGlobalSection
+EndGlobal
