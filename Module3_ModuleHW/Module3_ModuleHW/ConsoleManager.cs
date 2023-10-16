@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Module3_ModuleHW
 {
-    public class ConsoleManager : IManager
+    public class ConsoleManager
     {
         private static ContactBook book = new ContactBook();
         private static List<Contact> _book { get; set; }
@@ -31,7 +31,7 @@ namespace Module3_ModuleHW
 
         public static void SearchContactByPhone()
         {
-            Console.WriteLine("Input phone number ");
+            DisplayMessageOnConsole("Input phone number ");
             string number = Console.ReadLine();
             _book=book.SearchContactByNumber(number);
             ShowOnConsole(_book);
@@ -39,7 +39,7 @@ namespace Module3_ModuleHW
 
         public static void SearchContactByName()
         {
-            Console.WriteLine("Input name ");
+            DisplayMessageOnConsole("Input Name ");
             string name = Console.ReadLine();
             _book = book.SearchContactByName(name);
             ShowOnConsole(_book);
@@ -47,7 +47,7 @@ namespace Module3_ModuleHW
 
         public static void SearchContactBySurname()
         {
-            Console.WriteLine("Input surname ");
+            DisplayMessageOnConsole("Input Surname ");
             string surname = Console.ReadLine();
             _book = book.SearchContactBySurname(surname);
             ShowOnConsole(_book);
@@ -55,11 +55,11 @@ namespace Module3_ModuleHW
 
         public static Contact GetInformationAboutUser() 
         {
-            Console.WriteLine("Input Name ");
+            DisplayMessageOnConsole("Input Name ");
             string name = Console.ReadLine();
-            Console.WriteLine("Input Surname ");
+            DisplayMessageOnConsole("Input Surname ");
             string surname = Console.ReadLine();
-            Console.WriteLine("Input PhoneNumber ");
+            DisplayMessageOnConsole("Input PhoneNumber ");
             string phoneNumber = Console.ReadLine();
             return new Contact(name, surname, phoneNumber);
         }
@@ -70,6 +70,10 @@ namespace Module3_ModuleHW
             {
                 Console.WriteLine($"Name: {person.Name}, Surname: {person.Surname}, PhoneNumber: {person.PhoneNumber}");
             }
+        }
+        public static void DisplayMessageOnConsole(string message) 
+        {
+            Console.WriteLine(message);
         }
     }
 }

@@ -9,65 +9,86 @@ namespace Module3_ModuleHW
     public class Menu
     {
         ContactBook book = new ContactBook();
-        public void ShowMenu() 
-        {
-            Console.WriteLine("a - Add contact");
-            Console.WriteLine("b - Search contact by parametr");
-            Console.WriteLine("c - Display all contacts");
-            Console.WriteLine("d - remove contact");
-            Console.WriteLine("e - exit");
-        }
-
-        public void Start() 
+        public async Task Start() 
         {
             bool exit = false;
             while (!exit) 
             {
                 ShowMenu();
-                Console.WriteLine("Input your choice ");
+                ConsoleManager.DisplayMessageOnConsole("Input your choice ");
                 string userChoice = Console.ReadLine();
-                switch(userChoice)
+                switch (userChoice)
                 {
                     case "a":
-                        ConsoleManager.AddContact();
-                        Wait();
-                        break;
-                    case "b":
-                        SubMenu();
-                        Console.WriteLine("Input your choice ");
-                        string command = Console.ReadLine();
-                        switch (command)
+                        ShowConsoleMenu();
+                        ConsoleManager.DisplayMessageOnConsole("Input your choice ");
+                        userChoice = Console.ReadLine();
+                        switch (userChoice)
                         {
                             case "a":
-                                ConsoleManager.SearchContactByName();
+                                ConsoleManager.AddContact();
+                                Wait();
                                 break;
                             case "b":
-                                ConsoleManager.SearchContactBySurname();
+                                SubMenu();
+                                ConsoleManager.DisplayMessageOnConsole("Input your choice ");
+                                string command = Console.ReadLine();
+                                switch (command)
+                                {
+                                    case "a":
+                                        ConsoleManager.SearchContactByName();
+                                        break;
+                                    case "b":
+                                        ConsoleManager.SearchContactBySurname();
+                                        break;
+                                    case "c":
+                                        ConsoleManager.SearchContactByPhone();
+                                        break;
+                                    default:
+                                        ConsoleManager.DisplayMessageOnConsole("Input only a, b, c ");
+                                        break;
+                                }
+                                Wait();
                                 break;
                             case "c":
-                                ConsoleManager.SearchContactByPhone();
+                                ConsoleManager.DisplayAllContacts();
+                                Wait();
+                                break;
+                            case "d":
+                                ConsoleManager.RemoveContact();
+                                Wait();
                                 break;
                             default:
-                                Console.WriteLine("Input only a, b, c, d ");
+                                ConsoleManager.DisplayMessageOnConsole("Input only a, b, c, d");
+                                Wait();
                                 break;
                         }
-                        Wait();
+                        break;
+                    case "b":
+                        FileManager fileManager = new FileManager();
+                        FileMenu();
+                        ConsoleManager.DisplayMessageOnConsole("Input your choice ");
+                        string choice = Console.ReadLine();
+                        switch (choice)
+                        {
+                            case "a":
+                                await fileManager.StartWithFile("a");
+                                break;
+                            case "b":
+                                await fileManager.StartWithFile("b");
+                                break;
+                            default:
+                                ConsoleManager.DisplayMessageOnConsole("Input only a, b");
+                                break;
+                        }
                         break;
                     case "c":
-                        ConsoleManager.DisplayAllContacts();
-                        Wait();
-                        break;
-                    case "d":
-                        ConsoleManager.RemoveContact();
-                        Wait();
-                        break;
-                    case "e":
-                        Console.WriteLine("Exit");
+                        ConsoleManager.DisplayMessageOnConsole("Exit");
                         exit = true;
                         Wait();
-                        break; 
+                        break;
                     default:
-                        Console.WriteLine("Input only a, b, c, d, e");
+                        ConsoleManager.DisplayMessageOnConsole("Input only a, b, c");
                         Wait();
                         break;
                 }
@@ -76,14 +97,35 @@ namespace Module3_ModuleHW
         }
         private void SubMenu() 
         {
-            Console.WriteLine("a - search by Name \n" +
+            ConsoleManager.DisplayMessageOnConsole("a - search by Name \n" +
             "b - search by Surname \n" +
             "c - search by Phone");
         }
 
+        private void ShowConsoleMenu()
+        {
+            ConsoleManager.DisplayMessageOnConsole("a - Add contact");
+            ConsoleManager.DisplayMessageOnConsole("b - Search contact by parametr");
+            ConsoleManager.DisplayMessageOnConsole("c - Display all contacts");
+            ConsoleManager.DisplayMessageOnConsole("d - remove contact");
+        }
+
+        private void ShowMenu()
+        {
+            ConsoleManager.DisplayMessageOnConsole("a - Console");
+            ConsoleManager.DisplayMessageOnConsole("b - File");
+            ConsoleManager.DisplayMessageOnConsole("c - exit");
+        }
+
+        private void FileMenu()
+        {
+            ConsoleManager.DisplayMessageOnConsole("a - Add contact");
+            ConsoleManager.DisplayMessageOnConsole("b - Display all contacts");
+        }
+
         private void Wait()
         {
-            Console.WriteLine("Press any button");
+            ConsoleManager.DisplayMessageOnConsole("Press any button");
             Console.ReadKey();
         }
     }

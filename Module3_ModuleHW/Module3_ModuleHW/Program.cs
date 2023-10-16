@@ -4,8 +4,9 @@
     {
         static async Task Main(string[] args)
         {
-            Menu menu = new Menu();
-            menu.Start();
+            Menu menu = new Menu();   
+            await menu.Start();
+
         }
     }
 }
