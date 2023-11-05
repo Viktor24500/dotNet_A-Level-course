@@ -11,7 +11,7 @@
 
         public async Task<User> GetUserById(int id) 
         {
-            return await Task.Run(() => _users.FirstOrDefault(user => user.Id == id) );
+            return await Task.Run(() => _users.FirstOrDefault(searchUser => searchUser.Id == id));
         }
 
         public async Task CreateUser(User user)
@@ -23,7 +23,7 @@
         {
             return await Task.Run(() =>
             {
-                var findUser = _users.FirstOrDefault(u => u.Id == id);
+                var findUser = _users.FirstOrDefault(searchUser => searchUser.Id == id);
                 if (findUser != null)
                 {
                     findUser.Name = user.Name;
@@ -37,7 +37,7 @@
         {
             return await Task.Run(() =>
             {
-                var findUser = _users.FirstOrDefault(u => u.Id == id);
+                var findUser = _users.FirstOrDefault(searchUser => searchUser.Id == id);
                 if (findUser != null)
                 {
                     if (!string.IsNullOrEmpty(user.Name))
@@ -57,10 +57,10 @@
         {
             return await Task.Run(() =>
             {
-                var user = _users.FirstOrDefault(u => u.Id == id);
-                if (user != null)
+                var userDelete = _users.FirstOrDefault(searchUser => searchUser.Id == id);
+                if (userDelete != null)
                 {
-                    _users.Remove(user);
+                    _users.Remove(userDelete);
                     return true;
                 }
                 return false;

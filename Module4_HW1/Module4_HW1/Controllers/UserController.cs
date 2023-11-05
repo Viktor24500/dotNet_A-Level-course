@@ -43,6 +43,7 @@ namespace Module4_HW1.Controllers
             return Ok(userUpdate);
         }
 
+        [HttpPatch("{id}")] //update part
         public async Task<IActionResult> UpdateUserPartial(int id,
             [FromBody] Microsoft.AspNetCore.JsonPatch.JsonPatchDocument<User> patchDocument)
         {
