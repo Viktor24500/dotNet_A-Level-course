@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Module4_ModuleHW.Entity;
 
+
 namespace Module4_ModuleHW.Configurations
 {
     public class OrderItemConfiguration : IEntityTypeConfiguration<OrderItem>

@@ -11,7 +11,7 @@ namespace Module4_ModuleHW.Configurations
 
         public DbSet<Product> Product { get; set; }
 
-        public DbSet<OrderItemConfiguration> OrderItem { get; set; }
+        public DbSet<OrderItem> OrderItem { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

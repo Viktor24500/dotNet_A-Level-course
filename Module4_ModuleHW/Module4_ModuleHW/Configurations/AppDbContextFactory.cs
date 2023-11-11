@@ -5,36 +5,19 @@ namespace Module4_ModuleHW.Configurations
 {
     public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDBContext>
     {
-        private static string? _connectionString;
-        public AppDBContext CreateDbContext()
-        {
-            return CreateDbContext(null);
-        }
-
         public AppDBContext CreateDbContext(string[] args)
         {
-            if (string.IsNullOrWhiteSpace(_connectionString))
-            {
-                LoadConnection();
-            }
+            var optionsBuilder = new DbContextOptionsBuilder<AppDBContext>();
 
-            var builder = new DbContextOptionsBuilder<AppDBContext>();
-            builder.UseSqlServer(_connectionString);
-
-            return new AppDBContext(builder.Options);
-        }
-
-        private static void LoadConnection()
-        {
             var builder = new ConfigurationBuilder();
+            builder.SetBasePath(Directory.GetCurrentDirectory());
+            builder.AddJsonFile("config.json");
+            var config = builder.Build();
 
-            builder
-                .AddJsonFile("appsettings.json", optional: false)
-                .AddUserSecrets<AppDbContextFactory>();
-
-            var configuration = builder.Build();
-
-            _connectionString = configuration.GetConnectionString(nameof(AppDBContext));
+            var connectionString = config.GetConnectionString("DefaultConnection");
+            optionsBuilder.UseSqlServer(connectionString, opts
+                => opts.CommandTimeout((int)TimeSpan.FromMinutes(10).TotalSeconds));
+            return new AppDBContext(optionsBuilder.Options);
         }
     }
 }
