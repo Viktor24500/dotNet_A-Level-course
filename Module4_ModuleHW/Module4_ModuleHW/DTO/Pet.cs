@@ -14,6 +14,10 @@
         public int? locationId { get; set; }
 
         public Location? Location { get; set; }
+
+        public int? ownerId { get; set; }
+
+        public Owner? Owner { get; set; }
         public string imageUrl { get; set; }
         public string petDescription { get; set; }
     }

@@ -31,6 +31,11 @@ namespace Module4_ModuleHW.Configurations
             builder.HasOne(h => h.Location)
                 .WithMany(b => b.Pets)
                 .HasForeignKey(b => b.locationId);
+
+            //1 Owner - Many Pets
+            builder.HasOne(h => h.Owner)
+                .WithMany(b => b.Pets)
+                .HasForeignKey(b => b.ownerId);
         }
     }
 }
