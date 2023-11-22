@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  webapi:
+    image: dbcontextapp
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__WebApiDatabase=Server=sql-server;Database=Module4_ModuleHW_ALevel;User=sa;Password=YourPassword;MultipleActiveResultSets=true;TrustServerCertificate=True;encrypt=false
+    ports:
+      - "5000:80"
+    depends_on:
+      - sql-server
+
+ sql-server:
+    image: mcr.microsoft.com/mssql/server:latest
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_PID: Express
+    ports:
+      - "1433:1433"
+      
