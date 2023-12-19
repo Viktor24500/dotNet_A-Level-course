@@ -23,7 +23,7 @@ namespace Catalog.Host.Controllers
         }
 
         [HttpGet("{id}")]
-        public List<Product> GetProductByID(int id)
+        public Product GetProductByID(int id)
         {
             return _listProducts[id];
         }
