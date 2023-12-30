@@ -1,32 +1,66 @@
-using System.Net;
-using Catalog.Host.Models.Requests;
-using Catalog.Host.Models.Response;
+﻿using System.Net;
+using Catalog.Host.Models.Requests.AddRequests;
+using Catalog.Host.Models.Requests.DeleteRequests;
+using Catalog.Host.Models.Requests.UpdateRequests;
+using Catalog.Host.Models.Responses.AddResponses;
+using Catalog.Host.Models.Responses.UpdateResponses;
 using Catalog.Host.Services.Interfaces;
 using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Catalog.Host.Controllers;
-
-[ApiController]
-[Route(ComponentDefaults.DefaultRoute)]
-public class CatalogItemController : ControllerBase
+namespace Catalog.Host.Controllers
 {
-    private readonly ILogger<CatalogItemController> _logger;
-    private readonly ICatalogItemService _catalogItemService;
-
-    public CatalogItemController(
-        ILogger<CatalogItemController> logger,
-        ICatalogItemService catalogItemService)
+    [ApiController]
+    [Route($"{ComponentDefaults.DefaultRoute}/catalog")]
+    public class CatalogItemController : ControllerBase
     {
-        _logger = logger;
-        _catalogItemService = catalogItemService;
-    }
+        private readonly ILogger<CatalogItemController> _logger;
+        private readonly ICatalogItemService _catalogItemService;
 
-    [HttpPost]
-    [ProducesResponseType(typeof(AddItemResponse<int?>), (int)HttpStatusCode.OK)]
-    public async Task<IActionResult> Add(CreateProductRequest request)
-    {
-        var result = await _catalogItemService.Add(request.Name, request.Description, request.Price, request.AvailableStock, request.CatalogBrandId, request.CatalogTypeId, request.PictureFileName);
-        return Ok(new AddItemResponse<int?>() { Id = result });
+        public CatalogItemController(
+            ILogger<CatalogItemController> logger,
+            ICatalogItemService catalogItemService)
+        {
+            _logger = logger;
+            _catalogItemService = catalogItemService;
+        }
+
+        [HttpGet("items")]
+        public async Task<IActionResult> GetByPage(int pageIndex = 1, int pageSize = 10)
+        {
+            var result = await _catalogItemService.GetByPageAsyncHttpGet(pageIndex, pageSize);
+            return Ok(result);
+        }
+
+        [HttpPost("items")]
+        [ProducesResponseType(typeof(AddCatalogItemResponse<int?>), (int)HttpStatusCode.OK)]
+        public async Task<IActionResult> AddAsync(AddCatalogItemRequest request)
+        {
+            var result = await _catalogItemService.AddAsync(request);
+            return Ok(new AddCatalogItemResponse<int?>() { Id = result });
+        }
+
+        [HttpPut("items/{id}")]
+        [ProducesResponseType(typeof(UpdateCatalogItemResponse<int>), (int)HttpStatusCode.OK)]
+        public async Task<IActionResult> UpdateItem(int id, UpdateCatalogItemRequest request)
+        {
+            var result = await _catalogItemService.UpdateAsync(request);
+            return Ok(result);
+        }
+
+        [HttpDelete("items/{id}")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        public async Task<IActionResult> DeleteItem(int id)
+        {
+            try
+            {
+                await _catalogItemService.DeleteAsync(new DeleteCatalogItemRequest() { Id = id });
+                return Ok("Item successfully deleted");
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound("Item not found");
+            }
+        }
     }
 }

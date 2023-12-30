@@ -1,25 +1,24 @@
-using Catalog.Host.Data.Entities;
-using Catalog.Host.Models.Dtos;
+﻿using Catalog.Host.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Catalog.Host.Data.EntityConfigurations;
-
-public class CatalogTypeEntityTypeConfiguration
-    : IEntityTypeConfiguration<CatalogType>
+namespace Catalog.Host.Data.EntityConfigurations
 {
-    public void Configure(EntityTypeBuilder<CatalogType> builder)
+    public class CatalogTypeEntityTypeConfiguration : IEntityTypeConfiguration<CatalogType>
     {
-        builder.ToTable("CatalogType");
+        public void Configure(EntityTypeBuilder<CatalogType> builder)
+        {
+            builder.ToTable("CatalogType");
 
-        builder.HasKey(ci => ci.Id);
+            builder.HasKey(catalogType => catalogType.Id);
 
-        builder.Property(ci => ci.Id)
-            .UseHiLo("catalog_type_hilo")
-            .IsRequired();
+            builder.Property(catalogType => catalogType.Id)
+                .UseHiLo("catalog_type_hilo")
+                .IsRequired();
 
-        builder.Property(cb => cb.Type)
-            .IsRequired()
-            .HasMaxLength(100);
+            builder.Property(catalogType => catalogType.Type)
+                .IsRequired()
+                .HasMaxLength(50);
+        }
     }
 }
