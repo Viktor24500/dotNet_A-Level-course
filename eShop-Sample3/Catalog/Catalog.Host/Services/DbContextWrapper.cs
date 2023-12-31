@@ -1,24 +1,22 @@
-using Catalog.Host.Services.Interfaces;
+﻿using Catalog.Host.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 
-namespace Catalog.Host.Services;
-
-public class DbContextWrapper<T> : IDbContextWrapper<T>
-    where T : DbContext
+namespace Catalog.Host.Services
 {
-    private readonly T _dbContext;
-
-    public DbContextWrapper(
-        IDbContextFactory<T> dbContextFactory)
+    public class DbContextWrapper<T> : IDbContextWrapper<T> where T : DbContext
     {
-        _dbContext = dbContextFactory.CreateDbContext();
-    }
+        private readonly T _dbContext;
 
-    public T DbContext => _dbContext;
+        public DbContextWrapper(IDbContextFactory<T> dbContextFactory)
+        {
+            _dbContext = dbContextFactory.CreateDbContext();
+        }
+        public T DbContext => _dbContext;
 
-    public Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken)
-    {
-        return _dbContext.Database.BeginTransactionAsync(cancellationToken);
+        public Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken)
+        {
+            return _dbContext.Database.BeginTransactionAsync(cancellationToken);
+        }
     }
 }

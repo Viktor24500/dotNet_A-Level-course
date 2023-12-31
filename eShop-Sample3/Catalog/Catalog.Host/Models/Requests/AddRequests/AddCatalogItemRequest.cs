@@ -1,4 +1,6 @@
-﻿namespace Catalog.Host.Models.Requests
+﻿using Catalog.Host.Data.Entities;
+
+namespace Catalog.Host.Models.Requests.AddRequests
 {
     public class AddCatalogItemRequest
     {

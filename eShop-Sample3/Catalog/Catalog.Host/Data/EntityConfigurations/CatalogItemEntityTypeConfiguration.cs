@@ -1,36 +1,41 @@
-using Catalog.Host.Data.Entities;
+﻿using Catalog.Host.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Catalog.Host.Data.EntityConfigurations;
-
-public class CatalogItemEntityTypeConfiguration
-    : IEntityTypeConfiguration<CatalogItem>
+namespace Catalog.Host.Data.EntityConfigurations
 {
-    public void Configure(EntityTypeBuilder<CatalogItem> builder)
+    public class CatalogItemEntityTypeConfiguration : IEntityTypeConfiguration<CatalogItem>
     {
-        builder.ToTable("Catalog");
+        public void Configure(EntityTypeBuilder<CatalogItem> builder)
+        {
+            builder.ToTable("CatalogItem");
 
-        builder.Property(ci => ci.Id)
-            .UseHiLo("catalog_hilo")
-            .IsRequired();
+            builder.HasKey(catalogItem => catalogItem.Id);
 
-        builder.Property(ci => ci.Name)
-            .IsRequired(true)
-            .HasMaxLength(50);
+            builder.Property(catalogItem => catalogItem.Id)
+                .UseHiLo()
+                .IsRequired();
 
-        builder.Property(ci => ci.Price)
-            .IsRequired(true);
+            builder.Property(catalogItem => catalogItem.Name)
+                .IsRequired()
+                .HasMaxLength(100);
 
-        builder.Property(ci => ci.PictureFileName)
-            .IsRequired(false);
+            builder.Property(catalogItem => catalogItem.Price)
+                .IsRequired();
 
-        builder.HasOne(ci => ci.CatalogBrand)
-            .WithMany()
-            .HasForeignKey(ci => ci.CatalogBrandId);
+            builder.Property(catalogItem => catalogItem.PictureFileName)
+                .IsRequired(false);
 
-        builder.HasOne(ci => ci.CatalogType)
-            .WithMany()
-            .HasForeignKey(ci => ci.CatalogTypeId);
+            builder.Property(catalogItem => catalogItem.Description)
+                .IsRequired(false);
+
+            builder.HasOne(catalogType => catalogType.CatalogBrand)
+                .WithMany()
+                .HasForeignKey(catalogItem => catalogItem.CatalogTypeId);
+
+            builder.HasOne(catalogBrand => catalogBrand.CatalogBrand)
+                .WithMany()
+                .HasForeignKey(catalogItem => catalogItem.CatalogBrandId);
+        }
     }
 }

@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using Catalog.Host.Data;
-using Catalog.Host.Models.Dtos;
-using Catalog.Host.Models.Response;
+using Catalog.Host.Models.DTOs;
+using Catalog.Host.Models.Responses;
+using Catalog.Host.Repositories;
 using Catalog.Host.Repositories.Interfaces;
 using Catalog.Host.Services.Interfaces;
 
@@ -15,12 +16,12 @@ namespace Catalog.Host.Services
 
         private readonly IMapper _mapper;
         public CatalogBffService(
-            IDbContextWrapper<ApplicationDbContext> dbContextWrapper,
+            IDbContextWrapper<ApplicationDbContext> dbContextWrapper, 
             ILogger<BaseDataService<ApplicationDbContext>> logger,
             ICatalogItemRepository catalogItemRepository,
             ICatalogBrandRepository catalogBrandRepository,
             ICatalogTypeRepository catalogTypeRepository,
-            IMapper mapper)
+            IMapper mapper) 
             : base(dbContextWrapper, logger)
         {
             _catalogItemRepository = catalogItemRepository;
@@ -29,7 +30,7 @@ namespace Catalog.Host.Services
             _catalogTypeRepository = catalogTypeRepository;
         }
 
-        // Items
+        //Items
         public async Task<PaginatedItemsResponse<CatalogItemDto>> GetCatalogItemsAsync(int pageIndex, int pageSize)
         {
             return await ExecuteSafeAsync(async () =>
@@ -86,7 +87,8 @@ namespace Catalog.Host.Services
             });
         }
 
-        // Brands
+
+        //Brands
         public async Task<PaginatedItemsResponse<CatalogBrandDto>> GetBrandsByPageAsync(int pageIndex, int pageSize)
         {
             return await ExecuteSafeAsync(async () =>
@@ -112,7 +114,8 @@ namespace Catalog.Host.Services
             });
         }
 
-        // Types
+
+        //Types
         public async Task<PaginatedItemsResponse<CatalogTypeDto>> GetTypesByPageAsync(int pageIndex, int pageSize)
         {
             return await ExecuteSafeAsync(async () =>
@@ -137,5 +140,8 @@ namespace Catalog.Host.Services
                 return _mapper.Map<CatalogTypeDto>(type);
             });
         }
+
+
+
     }
 }
