@@ -1,12 +1,10 @@
 ﻿using AutoMapper;
 using Catalog.Host.Data;
-using Catalog.Host.Models.DTOs;
-using Catalog.Host.Models.Requests;
+using Catalog.Host.Models.Dtos;
 using Catalog.Host.Models.Requests.AddRequests;
 using Catalog.Host.Models.Requests.DeleteRequests;
 using Catalog.Host.Models.Requests.UpdateRequests;
 using Catalog.Host.Models.Responses.UpdateResponses;
-using Catalog.Host.Repositories;
 using Catalog.Host.Repositories.Interfaces;
 using Catalog.Host.Services.Interfaces;
 
@@ -66,8 +64,5 @@ namespace Catalog.Host.Services
         {
             return ExecuteSafeAsync(() => _catalogBrandRepository.DeleteAsync(deleteCatalogBrand));
         }
-
-
-
     }
 }

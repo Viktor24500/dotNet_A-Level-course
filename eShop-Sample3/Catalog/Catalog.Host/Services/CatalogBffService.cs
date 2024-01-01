@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
 using Catalog.Host.Data;
-using Catalog.Host.Models.DTOs;
+using Catalog.Host.Models.Dtos;
 using Catalog.Host.Models.Responses;
-using Catalog.Host.Repositories;
 using Catalog.Host.Repositories.Interfaces;
 using Catalog.Host.Services.Interfaces;
 
@@ -16,12 +15,12 @@ namespace Catalog.Host.Services
 
         private readonly IMapper _mapper;
         public CatalogBffService(
-            IDbContextWrapper<ApplicationDbContext> dbContextWrapper, 
+            IDbContextWrapper<ApplicationDbContext> dbContextWrapper,
             ILogger<BaseDataService<ApplicationDbContext>> logger,
             ICatalogItemRepository catalogItemRepository,
             ICatalogBrandRepository catalogBrandRepository,
             ICatalogTypeRepository catalogTypeRepository,
-            IMapper mapper) 
+            IMapper mapper)
             : base(dbContextWrapper, logger)
         {
             _catalogItemRepository = catalogItemRepository;
@@ -87,7 +86,6 @@ namespace Catalog.Host.Services
             });
         }
 
-
         //Brands
         public async Task<PaginatedItemsResponse<CatalogBrandDto>> GetBrandsByPageAsync(int pageIndex, int pageSize)
         {
@@ -114,7 +112,6 @@ namespace Catalog.Host.Services
             });
         }
 
-
         //Types
         public async Task<PaginatedItemsResponse<CatalogTypeDto>> GetTypesByPageAsync(int pageIndex, int pageSize)
         {
@@ -140,8 +137,5 @@ namespace Catalog.Host.Services
                 return _mapper.Map<CatalogTypeDto>(type);
             });
         }
-
-
-
     }
 }

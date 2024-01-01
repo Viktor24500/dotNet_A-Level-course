@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Catalog.Host.Data;
-using Catalog.Host.Models.DTOs;
+using Catalog.Host.Models.Dtos;
 using Catalog.Host.Models.Requests.AddRequests;
 using Catalog.Host.Models.Requests.DeleteRequests;
 using Catalog.Host.Models.Requests.UpdateRequests;
@@ -64,7 +64,7 @@ namespace Catalog.Host.Services
             {
                 var item = await _catalogItemRepository.UpdateAsync(updateCatalogItem);
                 return new UpdateCatalogItemResponse<int>
-                {                  
+                {
                     Item = _mapper.Map<CatalogGetItemDto>(item)
                 };
             });
@@ -75,6 +75,9 @@ namespace Catalog.Host.Services
             return ExecuteSafeAsync(() => _catalogItemRepository.DeleteAsync(deleteCatalogItem));
         }
 
-
+        public Task<int?> AddAsync(string name, Models.Requests.AddCatalogItemRequest addCatalogItem)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

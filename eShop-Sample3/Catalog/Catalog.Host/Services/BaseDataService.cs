@@ -8,9 +8,7 @@ namespace Catalog.Host.Services
         private readonly IDbContextWrapper<T> _dbContextWrapper;
         private readonly ILogger<BaseDataService<T>> _logger;
 
-        protected BaseDataService
-            (IDbContextWrapper<T> dbContextWrapper,
-             ILogger<BaseDataService<T>> logger)
+        protected BaseDataService(IDbContextWrapper<T> dbContextWrapper, ILogger<BaseDataService<T>> logger)
         {
             _dbContextWrapper = dbContextWrapper;
             _logger = logger;
@@ -39,7 +37,7 @@ namespace Catalog.Host.Services
             }
         }
 
-        private async Task<TResult> ExecuteSafeAsync<TResult>(Func<CancellationToken,Task<TResult>> action, CancellationToken cancellationToken = default)
+        private async Task<TResult> ExecuteSafeAsync<TResult>(Func<CancellationToken, Task<TResult>> action, CancellationToken cancellationToken = default)
         {
             await using var transaction = await _dbContextWrapper.BeginTransactionAsync(cancellationToken);
 
@@ -57,8 +55,7 @@ namespace Catalog.Host.Services
                 _logger.LogError(ex, $"transaction is rollbacked");
             }
 
-            return default(TResult) !;
+            return default(TResult)!;
         }
-
     }
 }

@@ -1,25 +1,24 @@
-﻿using Catalog.Host.Data.Entities;
+using Catalog.Host.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Catalog.Host.Data.EntityConfigurations
+namespace Catalog.Host.Data.EntityConfigurations;
+
+public class CatalogBrandEntityTypeConfiguration
+    : IEntityTypeConfiguration<CatalogBrand>
 {
-    public class CatalogBrandEntityTypeConfiguration : IEntityTypeConfiguration<CatalogBrand>
+    public void Configure(EntityTypeBuilder<CatalogBrand> builder)
     {
-        public void Configure(EntityTypeBuilder<CatalogBrand> builder)
-        {
-            builder.ToTable("CatalogBrand");
-            
-            builder.HasKey(catalogBrand => catalogBrand.Id);
+        builder.ToTable("CatalogBrand");
 
-            builder.Property(catalogBrand => catalogBrand.Id)
-                .UseHiLo("catalog_brand_hilo")
-                .IsRequired();
+        builder.HasKey(ci => ci.Id);
 
-            builder.Property(catalogBrand => catalogBrand.Brand)
-                .IsRequired()
-                .HasMaxLength(100);
+        builder.Property(ci => ci.Id)
+            .UseHiLo("catalog_brand_hilo")
+            .IsRequired();
 
-        }
+        builder.Property(cb => cb.Brand)
+            .IsRequired()
+            .HasMaxLength(100);
     }
 }

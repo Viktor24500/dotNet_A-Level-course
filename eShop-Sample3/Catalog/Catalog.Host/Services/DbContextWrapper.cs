@@ -12,6 +12,7 @@ namespace Catalog.Host.Services
         {
             _dbContext = dbContextFactory.CreateDbContext();
         }
+
         public T DbContext => _dbContext;
 
         public Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken)

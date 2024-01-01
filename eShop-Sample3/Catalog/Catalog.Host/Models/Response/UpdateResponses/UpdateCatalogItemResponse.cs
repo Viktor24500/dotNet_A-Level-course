@@ -1,4 +1,4 @@
-﻿using Catalog.Host.Models.DTOs;
+﻿using Catalog.Host.Models.Dtos;
 
 namespace Catalog.Host.Models.Responses.UpdateResponses
 {
