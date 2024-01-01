@@ -1,7 +1,7 @@
 using AutoMapper;
 using Catalog.Host.Data;
 using Catalog.Host.Models.Dtos;
-using Catalog.Host.Models.Response;
+using Catalog.Host.Models.Responses;
 using Catalog.Host.Repositories.Interfaces;
 using Catalog.Host.Services.Interfaces;
 
@@ -30,7 +30,7 @@ public class CatalogService : BaseDataService<ApplicationDbContext>, ICatalogSer
             var result = await _catalogItemRepository.GetByPageAsync(pageIndex, pageSize);
             return new PaginatedItemsResponse<CatalogItemDto>()
             {
-                Count = result.TotalCount,
+                Count = result.Count,
                 Data = result.Data.Select(s => _mapper.Map<CatalogItemDto>(s)).ToList(),
                 PageIndex = pageIndex,
                 PageSize = pageSize

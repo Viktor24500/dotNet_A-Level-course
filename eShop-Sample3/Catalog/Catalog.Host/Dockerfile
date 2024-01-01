@@ -1,4 +1,4 @@
-﻿# https:// hub.docker.com/_/microsoft-dotnet
+﻿# https://hub.docker.com/_/microsoft-dotnet
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 COPY . /src
 WORKDIR /src/Catalog/Catalog.Host

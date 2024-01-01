@@ -1,4 +1,6 @@
-﻿namespace Catalog.Host.Models.Requests.UpdateRequests
+﻿using Catalog.Host.Models.Requests.AddRequests;
+
+namespace Catalog.Host.Models.Requests.UpdateRequests
 {
     public class UpdateCatalogItemRequest : AddCatalogItemRequest
     {

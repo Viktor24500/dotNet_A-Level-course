@@ -8,8 +8,7 @@ namespace Catalog.Host.Services
         private readonly IDbContextWrapper<T> _dbContextWrapper;
         private readonly ILogger<BaseDataService<T>> _logger;
 
-        protected BaseDataService
-            (IDbContextWrapper<T> dbContextWrapper, ILogger<BaseDataService<T>> logger)
+        protected BaseDataService(IDbContextWrapper<T> dbContextWrapper, ILogger<BaseDataService<T>> logger)
         {
             _dbContextWrapper = dbContextWrapper;
             _logger = logger;
@@ -58,6 +57,5 @@ namespace Catalog.Host.Services
 
             return default(TResult)!;
         }
-
     }
 }

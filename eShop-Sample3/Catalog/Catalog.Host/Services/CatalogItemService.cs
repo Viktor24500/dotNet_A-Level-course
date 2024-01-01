@@ -75,6 +75,9 @@ namespace Catalog.Host.Services
             return ExecuteSafeAsync(() => _catalogItemRepository.DeleteAsync(deleteCatalogItem));
         }
 
-
+        public Task<int?> AddAsync(string name, Models.Requests.AddCatalogItemRequest addCatalogItem)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

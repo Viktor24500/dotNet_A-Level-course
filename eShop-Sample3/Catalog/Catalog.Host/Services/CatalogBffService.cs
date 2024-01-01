@@ -29,7 +29,7 @@ namespace Catalog.Host.Services
             _catalogTypeRepository = catalogTypeRepository;
         }
 
-        // Items
+        //Items
         public async Task<PaginatedItemsResponse<CatalogItemDto>> GetCatalogItemsAsync(int pageIndex, int pageSize)
         {
             return await ExecuteSafeAsync(async () =>
@@ -86,8 +86,7 @@ namespace Catalog.Host.Services
             });
         }
 
-
-        // Brands
+        //Brands
         public async Task<PaginatedItemsResponse<CatalogBrandDto>> GetBrandsByPageAsync(int pageIndex, int pageSize)
         {
             return await ExecuteSafeAsync(async () =>
@@ -113,8 +112,7 @@ namespace Catalog.Host.Services
             });
         }
 
-
-        // Types
+        //Types
         public async Task<PaginatedItemsResponse<CatalogTypeDto>> GetTypesByPageAsync(int pageIndex, int pageSize)
         {
             return await ExecuteSafeAsync(async () =>
@@ -139,8 +137,5 @@ namespace Catalog.Host.Services
                 return _mapper.Map<CatalogTypeDto>(type);
             });
         }
-
-
-
     }
 }

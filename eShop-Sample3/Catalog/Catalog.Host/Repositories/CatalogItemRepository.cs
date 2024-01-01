@@ -1,8 +1,10 @@
 ﻿using Catalog.Host.Data;
 using Catalog.Host.Data.Entities;
+using Catalog.Host.Models.Dtos;
 using Catalog.Host.Models.Requests.AddRequests;
 using Catalog.Host.Models.Requests.DeleteRequests;
 using Catalog.Host.Models.Requests.UpdateRequests;
+using Catalog.Host.Models.Responses;
 using Catalog.Host.Repositories.Interfaces;
 using Catalog.Host.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -33,7 +35,6 @@ namespace Catalog.Host.Repositories
                 .Skip(pageSize * (pageIndex - 1))
                 .Take(pageSize)
                 .ToListAsync();
-
             return new PaginatedItems<CatalogItem>
             {
                 TotalCount = totalItems,
@@ -136,6 +137,11 @@ namespace Catalog.Host.Repositories
 
             _dbContext.CatalogItems.Remove(item);
             await _dbContext.SaveChangesAsync();
+        }
+
+        public Task<PaginatedItemsResponse<CatalogItemDto>> GetByPageAsync(int pageIndex, int pageSize)
+        {
+            throw new NotImplementedException();
         }
     }
 }

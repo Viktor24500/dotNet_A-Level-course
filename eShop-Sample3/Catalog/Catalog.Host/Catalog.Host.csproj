@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <Nullable>enable</Nullable>
+        <Nullable>disable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
         <CodeAnalysisRuleSet>../../settings.ruleset</CodeAnalysisRuleSet>
@@ -25,10 +25,6 @@
       <None Remove="Data\Setup\CatalogBrands.csv" />
       <None Remove="Data\Setup\CatalogItems.csv" />
       <None Remove="Data\Setup\CatalogTypes.csv" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Include="..\..\.editorconfig" Link=".editorconfig" />
     </ItemGroup>
 
     <ItemGroup>

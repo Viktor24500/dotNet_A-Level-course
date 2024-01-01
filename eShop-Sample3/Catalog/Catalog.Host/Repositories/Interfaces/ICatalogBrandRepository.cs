@@ -1,5 +1,6 @@
 ﻿using Catalog.Host.Data.Entities;
 using Catalog.Host.Data;
+using Microsoft.EntityFrameworkCore;
 using Catalog.Host.Models.Requests.AddRequests;
 using Catalog.Host.Models.Requests.UpdateRequests;
 using Catalog.Host.Models.Requests.DeleteRequests;
