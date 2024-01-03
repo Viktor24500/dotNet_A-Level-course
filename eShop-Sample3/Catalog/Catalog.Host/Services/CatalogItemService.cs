@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Catalog.Host.Data;
 using Catalog.Host.Models.Dtos;
-using Catalog.Host.Models.Requests.AddRequests;
+using Catalog.Host.Models.Requests;
 using Catalog.Host.Models.Requests.DeleteRequests;
 using Catalog.Host.Models.Requests.UpdateRequests;
 using Catalog.Host.Models.Responses.UpdateResponses;
@@ -53,11 +53,6 @@ namespace Catalog.Host.Services
             return null;
         }
 
-        public Task<int?> AddAsync(AddCatalogItemRequest addCatalogItem)
-        {
-            return ExecuteSafeAsync(() => _catalogItemRepository.AddAsync(addCatalogItem));
-        }
-
         public async Task<UpdateCatalogItemResponse<int>> UpdateAsync(UpdateCatalogItemRequest updateCatalogItem)
         {
             return await ExecuteSafeAsync(async () =>
@@ -75,9 +70,9 @@ namespace Catalog.Host.Services
             return ExecuteSafeAsync(() => _catalogItemRepository.DeleteAsync(deleteCatalogItem));
         }
 
-        public Task<int?> AddAsync(string name, Models.Requests.AddCatalogItemRequest addCatalogItem)
+        public Task<int?> AddAsync(AddCatalogItemRequest addCatalogItem)
         {
-            throw new NotImplementedException();
+            return ExecuteSafeAsync(() => _catalogItemRepository.AddAsync(addCatalogItem));
         }
     }
 }

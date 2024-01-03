@@ -1,6 +1,5 @@
 ﻿using Catalog.Host.Data;
 using Catalog.Host.Data.Entities;
-using Catalog.Host.Models.Dtos;
 using Catalog.Host.Models.Requests.AddRequests;
 using Catalog.Host.Models.Requests.DeleteRequests;
 using Catalog.Host.Models.Requests.UpdateRequests;
@@ -139,9 +138,21 @@ namespace Catalog.Host.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
-        public Task<PaginatedItemsResponse<CatalogItemDto>> GetByPageAsync(int pageIndex, int pageSize)
+        public async Task<PaginatedItemsResponse<CatalogItem>> GetByPageAsync(int pageIndex, int pageSize)
         {
-            throw new NotImplementedException();
+            var totalItems = await _dbContext.CatalogItems.LongCountAsync();
+
+            var catalogItems = await _dbContext.CatalogItems
+                .OrderBy(c => c.Name)
+                .Skip(pageSize * pageIndex)
+                .Take(pageSize)
+                .ToListAsync();
+
+            return new PaginatedItemsResponse<CatalogItem>
+            {
+                Count = totalItems,
+                Data = catalogItems
+            };
         }
     }
 }

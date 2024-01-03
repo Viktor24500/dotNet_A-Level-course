@@ -10,11 +10,11 @@ namespace Catalog.Host.Services.Interfaces
         Task<PaginatedItemsResponse<CatalogGetItemDto>> GetItemsByBrandAsync(int brandId);
         Task<PaginatedItemsResponse<CatalogGetItemDto>> GetItemsByTypeAsync(int typeId);
 
-        //Brands
+        // Brands
         Task<PaginatedItemsResponse<CatalogBrandDto>> GetBrandsByPageAsync(int pageIndex, int pageSize);
         Task<CatalogBrandDto> GetBrandByIdAsync(int id);
 
-        //Types
+        // Types
         Task<PaginatedItemsResponse<CatalogTypeDto>> GetTypesByPageAsync(int pageIndex, int pageSize);
         Task<CatalogTypeDto> GetTypeByIdAsync(int id);
     }

@@ -1,6 +1,5 @@
 ﻿using Catalog.Host.Data;
 using Catalog.Host.Data.Entities;
-using Catalog.Host.Models.Dtos;
 using Catalog.Host.Models.Requests.AddRequests;
 using Catalog.Host.Models.Requests.DeleteRequests;
 using Catalog.Host.Models.Requests.UpdateRequests;
@@ -19,6 +18,6 @@ namespace Catalog.Host.Repositories.Interfaces
         Task<int?> AddAsync(AddCatalogItemRequest itemToAdd);
         Task<CatalogItem> UpdateAsync(UpdateCatalogItemRequest itemToUpdate);
         Task DeleteAsync(DeleteCatalogItemRequest itemToDelete);
-        Task<PaginatedItemsResponse<CatalogItemDto>> GetByPageAsync(int pageIndex, int pageSize);
+        Task<PaginatedItemsResponse<CatalogItem>> GetByPageAsync(int pageIndex, int pageSize);
     }
 }

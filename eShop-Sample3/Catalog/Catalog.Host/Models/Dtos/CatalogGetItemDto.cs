@@ -13,6 +13,8 @@
         public string PictureUrl { get; set; }
         public string BrandName { get; set; }
         public string TypeName { get; set; }
-        public string PictureFileName { get; internal set; }
+        public string PictureFileName { get; set; }
+
+        public int AvailableStock { get; set; }
     }
 }

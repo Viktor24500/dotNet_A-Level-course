@@ -45,7 +45,7 @@ namespace Catalog.Host.Repositories
 
             var brands = await _dbContext.CatalogBrands
                 .OrderBy(x => x.Id)
-                .Skip(pageSize * (pageIndex - 1)) 
+                .Skip(pageSize * (pageIndex - 1))
                 .Take(pageSize)
                 .ToListAsync();
 
@@ -99,6 +99,5 @@ namespace Catalog.Host.Repositories
             _dbContext.CatalogBrands.Remove(brand);
             await _dbContext.SaveChangesAsync();
         }
-
     }
 }
