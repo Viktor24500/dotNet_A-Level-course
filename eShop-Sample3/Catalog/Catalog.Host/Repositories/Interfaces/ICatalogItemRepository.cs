@@ -1,6 +1,6 @@
 ﻿using Catalog.Host.Data;
 using Catalog.Host.Data.Entities;
-using Catalog.Host.Models.Requests.AddRequests;
+using Catalog.Host.Models.Requests;
 using Catalog.Host.Models.Requests.DeleteRequests;
 using Catalog.Host.Models.Requests.UpdateRequests;
 using Catalog.Host.Models.Responses;

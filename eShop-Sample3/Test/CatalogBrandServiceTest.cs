@@ -11,7 +11,7 @@ using Catalog.Host.Models.Requests.UpdateRequests;
 using Catalog.Host.Data.Entities;
 using Catalog.Host.Models.Dtos;
 
-namespace Test
+namespace ServiceTest
 {
     [TestClass]
     public class CatalogBrandServiceTest

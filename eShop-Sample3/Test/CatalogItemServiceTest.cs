@@ -2,7 +2,6 @@
 using Catalog.Host.Data.Entities;
 using Catalog.Host.Data;
 using Catalog.Host.Models.Dtos;
-using Catalog.Host.Models.Requests.AddRequests;
 using Catalog.Host.Models.Requests.DeleteRequests;
 using Catalog.Host.Models.Requests.UpdateRequests;
 using Catalog.Host.Repositories.Interfaces;
@@ -10,8 +9,9 @@ using Catalog.Host.Services.Interfaces;
 using Catalog.Host.Services;
 using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Catalog.Host.Models.Requests;
 
-namespace Test
+namespace ServiceTest
 {
     [TestClass]
     public class CatalogItemServiceTest
@@ -23,7 +23,7 @@ namespace Test
         private readonly AddCatalogItemRequest _testItem = new AddCatalogItemRequest
         {
             Name = "Name1",
-            Description = "Test",
+            Description = "ServiceTest",
             Price = 1000,
             PictureFileName = "1.png",
             AvailableStock = 100

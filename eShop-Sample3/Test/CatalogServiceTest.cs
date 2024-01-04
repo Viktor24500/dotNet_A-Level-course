@@ -6,7 +6,7 @@ using Catalog.Host.Services.Interfaces;
 using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Test
+namespace ServiceTest
 {
     [TestClass]
     public class CatalogServiceTest

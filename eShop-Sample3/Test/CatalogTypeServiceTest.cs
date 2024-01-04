@@ -11,10 +11,10 @@ using Catalog.Host.Services;
 using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Test
+namespace ServiceTest
 {
     [TestClass]
-    public class AddTypeServiceTest
+    public class CatalogTypeServiceTest
     {
         private readonly ICatalogTypeRepository _catalogTypeRepository;
         private readonly IMapper _mapper;

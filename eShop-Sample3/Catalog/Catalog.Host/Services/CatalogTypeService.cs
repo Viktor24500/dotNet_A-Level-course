@@ -26,7 +26,7 @@ namespace Catalog.Host.Services
             _mapper = mapper;
         }
 
-        async Task<PaginatedItems<CatalogTypeDto>> ICatalogTypeService.GetByPageAsyncHttpGet(int pageIndex, int pageSize)
+        public async Task<PaginatedItems<CatalogTypeDto>> GetByPageAsyncHttpGet(int pageIndex, int pageSize)
         {
             var result = await _catalogTypeRepository.GetByPageAsyncHttpGet(pageIndex, pageSize);
 
