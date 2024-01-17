@@ -44,14 +44,14 @@ const Resource: FC<any> = (): ReactElement => {
               )}
 </Grid>
     < Box
-sx = {{
-    display: 'flex',
-        justifyContent: 'center'
-}}
+            sx = {{
+                display: 'flex',
+                    justifyContent: 'center'
+            }}
           >
     <Pagination count={ totalPages } page = { currentPage } onChange = { (event, page)=> setCurrentPage(page)} />
-        < /Box>
-        < /Container>
+        </Box>
+        </Container>
   );
 };
 
