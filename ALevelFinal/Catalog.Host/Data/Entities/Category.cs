@@ -4,5 +4,7 @@
     {
         public int categoryID { get; set; }
         public string categoryName { get; set; }
+
+        public List<Product> Products = new List<Product>();
     }
 }

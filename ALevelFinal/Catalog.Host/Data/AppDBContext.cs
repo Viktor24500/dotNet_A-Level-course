@@ -1,5 +1,6 @@
 ﻿using Catalog.Host.Data.Configurations;
 using Catalog.Host.Data.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Catalog.Host.Data
 {
