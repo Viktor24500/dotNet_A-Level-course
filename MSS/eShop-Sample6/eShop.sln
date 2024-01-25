@@ -70,6 +70,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure.RateLimit", "Infrastructure.RateLimit", "{048CE18A-6A7E-46B2-94BB-EE9A23E84002}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrasructure.RateLimit", "Infrasructure.RateLimit\Infrasructure.RateLimit.csproj", "{55980202-40AC-45F1-9E13-9AF5B83E7DA2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -104,6 +108,10 @@ Global
 		{B768BEC9-6B2A-471F-842C-FBB91630A6E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B768BEC9-6B2A-471F-842C-FBB91630A6E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B768BEC9-6B2A-471F-842C-FBB91630A6E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55980202-40AC-45F1-9E13-9AF5B83E7DA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55980202-40AC-45F1-9E13-9AF5B83E7DA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55980202-40AC-45F1-9E13-9AF5B83E7DA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55980202-40AC-45F1-9E13-9AF5B83E7DA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -121,6 +129,7 @@ Global
 		{F6BEB0F3-B23D-4D37-A01A-87D057796F2E} = {5E71A157-50BB-439B-8F59-C17B9200EBFA}
 		{ED59CFCD-8450-4790-B736-554C5493A46F} = {5754DE66-007D-4B94-9574-36763DDD4516}
 		{B768BEC9-6B2A-471F-842C-FBB91630A6E1} = {5EFD83DC-FAC5-4D81-BEFD-ED4CCD132802}
+		{55980202-40AC-45F1-9E13-9AF5B83E7DA2} = {048CE18A-6A7E-46B2-94BB-EE9A23E84002}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {242EF798-8815-45AC-8055-65BE0E069C7D}
